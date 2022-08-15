@@ -21,8 +21,8 @@ public class BathroomController {
     }
 
     @PostMapping
-    public void registerNewBathroom(@RequestBody Bathroom bathroom) {
-        bathroomService.addNewBathroom(bathroom);
+    public Bathroom registerNewBathroom(@RequestBody Bathroom bathroom) {
+        return bathroomService.addNewBathroom(bathroom);
     }
 
     @DeleteMapping(path = "{bathroomId}")

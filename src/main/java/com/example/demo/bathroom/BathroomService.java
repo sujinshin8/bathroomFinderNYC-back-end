@@ -21,8 +21,8 @@ public class BathroomService {
         return bathroomRepository.findAll();
     }
 
-    public void addNewBathroom(Bathroom bathroom) {
-        bathroomRepository.save(bathroom);
+    public Bathroom addNewBathroom(Bathroom bathroom) {
+        return bathroomRepository.save(bathroom);
     }
 
     public void deleteBathroom(Long bathroomId) {

@@ -35,24 +35,34 @@ public class BathroomService {
         bathroomRepository.deleteById(bathroomId);
     }
 
-    public void updateBathroom(Long bathroomId,
-                               String address,
-                               String description){
-        Bathroom bathroom = bathroomRepository.findById(bathroomId)
+//    public void updateBathroom(Long bathroomId,
+//                               String address,
+//                               String description){
+//        Bathroom bathroom = bathroomRepository.findById(bathroomId)
+//                .orElseThrow(() -> new IllegalStateException(
+//                        "bathroom with id " + bathroomId + " does not exist"
+//        ));
+//
+//        if (address != null &&
+//            address.length() > 0 &&
+//        !Objects.equals(bathroom.getAddress(), address)) {
+//            bathroom.setAddress(address);
+//        }
+//
+//        if (description != null &&
+//            description.length() > 0 &&
+//        !Objects.equals(bathroom.getDescription(), description)) {
+//            bathroom.setDescription(description);
+//        }
+//    }
+
+    public Bathroom updateBathroom(Long bathroomId, Bathroom bathroom) {
+        Bathroom newBathroom = bathroomRepository.findById(bathroomId)
                 .orElseThrow(() -> new IllegalStateException(
                         "bathroom with id " + bathroomId + " does not exist"
-        ));
+                ));
 
-        if (address != null &&
-            address.length() > 0 &&
-        !Objects.equals(bathroom.getAddress(), address)) {
-            bathroom.setAddress(address);
-        }
-
-        if (description != null &&
-            description.length() > 0 &&
-        !Objects.equals(bathroom.getDescription(), description)) {
-            bathroom.setDescription(description);
-        }
+        newBathroom.setRating(bathroom.getRating());
+        return bathroomRepository.save(newBathroom);
     }
 }

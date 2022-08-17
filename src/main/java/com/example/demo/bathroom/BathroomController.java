@@ -30,12 +30,19 @@ public class BathroomController {
         bathroomService.deleteBathroom(bathroomId);
     }
 
+//    @PutMapping(path = "{bathroomId}")
+//    public void updateBathroom(
+//            @PathVariable ("bathroomId") Long bathroomId,
+//            @RequestParam(required = false) String address,
+//            @RequestParam(required = false) String description) {
+//         bathroomService.updateBathroom(bathroomId,address, description);
+//    }
+
     @PutMapping(path = "{bathroomId}")
-    public void updateStudent(
+    public Bathroom updateBathroom(
             @PathVariable ("bathroomId") Long bathroomId,
-            @RequestParam(required = false) String address,
-            @RequestParam(required = false) String description) {
-        bathroomService.updateBathroom(bathroomId,address, description);
+            @RequestBody Bathroom bathroom) {
+        return bathroomService.updateBathroom(bathroomId, bathroom);
     }
 
 }
